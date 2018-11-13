@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>one stop shop!</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        {% include 'base/css.html' %}
+        {% block base_head %}{% endblock %}
+        </head>
+        <body>
+        {% include 'base/navbar.html' with brand_name='one stop shop!' %}
+        <div class="container">
+            {% if messages %}
+                <div class="row">
+                    {% for message in messages %}
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                            <span class="alert alert-danger {% if message.tags %} {{ message.tags }} {% endif %}"> Important:
+                        {% else %}
+                            <span class="alert alert-danger {% if message.tags %} {{ message.tags }} {% endif %}">
+                        {% endif %}
+                        {{ message }}<br/>
+                            </span></span>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            {% block content %}
+
+            {% endblock %}
+        </div>
+        {% include 'base/js.html' %}
+        {% block javascript %}
+        {% endblock %}
+        <div class="footer" style="height: 500px;"></div>
+    </body>
+</html>

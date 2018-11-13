@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="row mt-5">
+        <div class="col-12 mr-4">
+            <h1>{{ object.name }}</h1>
+            <p><b>MODEL</b>: {{object.model}} <b>SKU</b>: {{object.upc}}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="image-shell col-8" align="center">
+            <img class="img" src= "{{ object.image }}" onerror="this.src='http://www.brandnmc.com/jbframework/uploads/2017/07/image_not_available.png'">
+        </div>
+        <div class="col-4" align="left">
+            <p> <b>Price</b>: ${{object.price}}<br> <b>Shipping</b>: ${{object.shipping}}</p>
+            <hr/>
+            {% include 'products/snippets/add_to_cart.html' with product=object cart=cart %}
+            <hr/>
+            <p><b>Manufacturer</b>: {{object.manufacturer}}</p>
+            <p><b>Type</b>: {{object.type}}</p>
+            <p>{{object.description}}</p>
+        </div>
+    </div>
+{% endblock %}
